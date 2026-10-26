@@ -1,0 +1,5 @@
+# Local dependencies. fastapi and openai only run inside the Modal container,
+# but are listed here for local testing and editor support.
+modal
+fastapi[standard]
+openai
