@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Spatial Sense web client config (holds the client token)
+web/config.js
