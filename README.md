@@ -60,12 +60,8 @@ Each frame makes one SAM call per phrase, so cost scales with the phrase list. S
 
 Building period: October 27 to November 4, 2026.
 
-Built during the hackathon:
-- All code under `server/` and `web/`
-- The SAM 3.1 client, the Muse Spark instruction step, the token check, and the PWA
-
-Before the hackathon:
-- The repository was created on October 26 with a template README and `.gitignore`. No application code was committed before October 27.
+- Built during the hackathon: the web PWA, token authentication, CORS configuration, the Muse Spark instruction step, the README, and the mock-mode test flow.
+- Started before the building period (October 26, 2026): the initial SAM 3.1 client and the Modal CPU endpoint skeleton, committed in `aa4be43`. These were refined during the hackathon.
 
 ## Models
 
