@@ -29,6 +29,8 @@ PHRASES = [
     "pole",
     "curb",
     "step",
+    "bottle",
+    "can",
 ]
 
 # Matches "<object id><|box;x1=..;y1=..;x2=..;y2=..;w=..;h=..[;c=..]|>".

@@ -2,7 +2,7 @@
 
 import unittest
 
-from sam import parse_output
+from server.sam import parse_output
 
 # Real output_text from a SAM 3.1 response (mask payload truncated).
 REAL_OUTPUT = (
