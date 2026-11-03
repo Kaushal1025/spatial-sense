@@ -149,14 +149,14 @@ class GuidanceTest(unittest.TestCase):
         hand = box("hand", 0.4, 0.8, 0.1, 0.15)
         self.assertEqual(
             g.build_guidance([bottle, hand], ["bottle"], SIZE, HEIGHT),
-            ["Bottle, about 1 step, slightly right.", "Move your hand up and to the right."],
+            ["Move your hand up and to the right.", "Bottle, about 1 step, slightly right."],
         )
 
     def test_target_in_reach_without_hand(self):
         bottle = box("bottle", 0.5, 0.4, 0.1, 0.4)
         self.assertEqual(
             g.build_guidance([bottle], ["bottle"], SIZE, HEIGHT),
-            ["Bottle, about 1 step, straight ahead.", g.POINT_AT_HANDS],
+            [g.POINT_AT_HANDS, "Bottle, about 1 step, straight ahead."],
         )
 
     def test_far_target_skips_hand_guidance(self):

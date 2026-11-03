@@ -13,24 +13,50 @@
 <body>
   <main>
     <h1>Spatial Sense</h1>
+    <p class="note">Gives rough, estimated guidance. Use it with a white cane or guide dog, never instead of one.</p>
 
-    <label for="goal">What are you looking for? (optional)</label>
-    <input id="goal" type="text" placeholder="e.g. find the door" autocomplete="off">
+    <button id="toggle" class="primary" type="button" aria-pressed="false">Start</button>
 
-    <button id="toggle" type="button" aria-pressed="false">Start</button>
+    <p id="message" class="message">Tap Start. Then tell me your height in feet and inches, or centimeters.</p>
 
-    <p id="status" role="status" aria-live="polite">Stopped.</p>
+    <div id="controls" class="controls" hidden>
+      <button id="ask" class="primary" type="button" hidden>Ask</button>
+      <p id="target">Not looking for anything. Ask "where is the bottle".</p>
 
-    <video id="camera" autoplay playsinline muted aria-hidden="true"></video>
+      <p id="steps" hidden></p>
+      <button id="step" type="button" hidden>I took a step</button>
 
-    <section aria-labelledby="regions-heading">
-      <h2 id="regions-heading">Detected</h2>
-      <ul id="regions"><li>Nothing yet.</li></ul>
-    </section>
+      <form id="find-form">
+        <label for="find">Ask or type what to find, or "stop"</label>
+        <div class="row">
+          <input id="find" type="text" placeholder="where is the frying pan" autocomplete="off">
+          <button type="submit">Find</button>
+        </div>
+      </form>
+
+      <form id="height-form">
+        <label for="height">Your height: 5 10, 5 ft 10 in, or 178 cm</label>
+        <div class="row">
+          <input id="height" type="text" inputmode="text" placeholder="5 10" autocomplete="off">
+          <button type="submit">Set</button>
+        </div>
+      </form>
+      <p id="height-current">Height not set. Distances are shown without steps.</p>
+
+      <p id="status">Stopped.</p>
+
+      <video id="camera" autoplay playsinline muted aria-hidden="true"></video>
+
+      <section aria-labelledby="regions-heading">
+        <h2 id="regions-heading">Detected (estimates)</h2>
+        <ul id="regions"><li>Nothing yet.</li></ul>
+      </section>
+    </div>
   </main>
 
   <canvas id="frame" hidden></canvas>
   <script src="config.js"></script>
+  <script src="parse.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

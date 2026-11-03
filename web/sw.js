@@ -1,7 +1,7 @@
 // Caches the app shell so it opens offline. API calls always go to the network,
 // and config.js isn't cached so token changes take effect on reload.
-const CACHE = "spatial-sense-v2";
-const SHELL = ["./", "index.html", "style.css", "app.js", "manifest.json", "icon.svg"];
+const CACHE = "spatial-sense-v3";
+const SHELL = ["./", "index.html", "style.css", "parse.js", "app.js", "manifest.json", "icon.svg"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));

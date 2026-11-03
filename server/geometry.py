@@ -246,7 +246,7 @@ def build_guidance(
 ) -> list[str]:
     """Short spoken messages for one frame, most important first.
 
-    Order: obstacle warning, then target answers (with hand guidance once a
+    Order: obstacle warning, then target answers (led by hand guidance once a
     target is within reach), then the nearest other object. At most
     MAX_MESSAGES are returned.
     """
@@ -267,13 +267,15 @@ def build_guidance(
             continue
         region, m = _nearest(found)
         used.add(id(region))
-        messages.append(describe(target, m))
+        # Within reach, the hand hint comes first: the client speaks only the
+        # first message.
         if m["distance_m"] is None or m["distance_m"] <= REACH_M:
             if hands:
                 hand = max(hands, key=lambda item: item[0].get("score", 1.0))[0]
                 messages.append(hand_guidance(hand["bbox"], region["bbox"]))
             else:
                 messages.append(POINT_AT_HANDS)
+        messages.append(describe(target, m))
 
     others = [(r, m) for r, m in items if id(r) not in used and r["label"] not in targets and r["label"] != "hand"]
     if others:
