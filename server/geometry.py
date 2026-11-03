@@ -176,7 +176,12 @@ def annotate(regions: list[dict], size: tuple[int, int] | None, height_m: float)
     return out
 
 
+# Labels that read badly next to a step count ("Step, about 2 steps").
+SPOKEN_NAMES = {"step": "step edge"}
+
+
 def _spoken_label(label: str) -> str:
+    label = SPOKEN_NAMES.get(label, label)
     return label[:1].upper() + label[1:]
 
 

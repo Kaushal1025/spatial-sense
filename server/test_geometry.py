@@ -166,6 +166,9 @@ class GuidanceTest(unittest.TestCase):
         self.assertTrue(guidance[0].startswith("Bottle, about"))
         self.assertEqual(guidance[1], "Chair, about 3 steps, slightly left.")
 
+    def test_step_label_is_spoken_as_step_edge(self):
+        self.assertEqual(g.build_guidance([box("step", 0.5, 0.9, 0.4, 0.1)], [], SIZE, HEIGHT)[0][:15], "Step edge, abou")
+
     def test_annotate_adds_fields(self):
         [region] = g.annotate([box("chair", 0.2, 0.6, 0.2, 0.45)], SIZE, HEIGHT)
         self.assertEqual(region["steps"], 3)
