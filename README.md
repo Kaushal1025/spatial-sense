@@ -114,7 +114,7 @@ Requirements: Python 3.10+. Mock mode is the default and makes no API calls.
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install "fastapi[standard]"
-cd server && SAM_MOCK=1 CLIENT_TOKEN=dev ../.venv/bin/uvicorn api:create_app --factory --port 8001
+SAM_MOCK=1 CLIENT_TOKEN=dev PYTHONPATH=server .venv/bin/python -m uvicorn api:app --port 8001
 ```
 
 Then create `web/config.js` (git-ignored, never commit it) from `web/config.example.js` with `endpoint: "http://localhost:8001/segment"` and `clientToken: "dev"`, and in a second terminal:

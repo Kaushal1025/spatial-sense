@@ -1,7 +1,8 @@
 """FastAPI app for Spatial Sense, without any Modal dependency.
 
-app.py serves this on Modal. For a local mock server (no Modal, no API calls):
-    cd server && CLIENT_TOKEN=dev uvicorn api:create_app --factory --port 8001
+app.py serves this on Modal. For a local mock server (no Modal, no API calls),
+from the repo root:
+    SAM_MOCK=1 CLIENT_TOKEN=dev PYTHONPATH=server python3 -m uvicorn api:app --port 8000
 """
 
 import hmac
@@ -70,3 +71,8 @@ def create_app() -> FastAPI:
         }
 
     return web_app
+
+
+# Module-level app for `uvicorn api:app`. It reads the environment at import,
+# so set CLIENT_TOKEN (and SAM_MOCK, ALLOWED_ORIGIN) before starting.
+app = create_app()
