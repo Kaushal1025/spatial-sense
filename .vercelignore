@@ -1,0 +1,5 @@
+# Never upload local secrets; the build writes web/config.js from env vars.
+web/config.js
+.env
+server/
+tests/
